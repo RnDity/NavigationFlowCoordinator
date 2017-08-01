@@ -9,16 +9,15 @@
 import UIKit
 
 open class NavigationFlowCoordinator: FlowCoordinator {
+    public var navigationController: UINavigationController {
+        return navigationCoordinatorsTracker.navigationController
+    }
+    
     override open var coordinatorsTracker: CoordinatorsTracker? {
         return navigationCoordinatorsTracker
     }
     
     private var navigationCoordinatorsTracker: NavigationControllerCoordinatorsTracker!
-    
-    public var navigationController: UINavigationController {
-        return navigationCoordinatorsTracker.navigationController
-    }
-    
     private(set) var mainViewController: UIViewController!
     
     override open func start() {
@@ -59,7 +58,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         navigationController.pushViewController(viewController, animated: animated)
     }
 
-    public func popToViewControllerBeforeMainOne(animated: Bool = true) {
+    public func popAllRelatedViewControllers(animated: Bool = true) {
         if let index = navigationController.viewControllers.index(of: mainViewController), index > 0 {
             navigationController.popToViewController(navigationController.viewControllers[index - 1], animated: animated)
         }
@@ -96,7 +95,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         viewController.dismiss(animated: animated, completion: nil)
     }
     
-    public func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
+    public func dismissLastViewController(animated: Bool = true, completion: (() -> Void)? = nil) {
         navigationController.dismiss(animated: animated, completion: completion)
     }
 }
