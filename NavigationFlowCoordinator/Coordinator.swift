@@ -10,4 +10,5 @@ import Foundation
 
 public protocol Coordinator: class {
     func start()
+    func finish()
 }

@@ -31,6 +31,10 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         }
     }
     
+    override open func finish() {
+        popAllRelatedViewControllers()
+    }
+    
     open func createMainViewController() -> UIViewController? {
         return nil
     }
@@ -52,7 +56,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     }
     
     
-    // MARK: Navigation cotroller related flow
+    // MARK: Navigation controller related flow
     
     public func push(viewController: UIViewController, animated: Bool = true) {
         navigationController.pushViewController(viewController, animated: animated)

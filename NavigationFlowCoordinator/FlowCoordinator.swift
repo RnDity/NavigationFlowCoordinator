@@ -19,6 +19,8 @@ open class FlowCoordinator: NSObject, Coordinator {
         fatalError("start() method has to be overriden by FlowCoordinator subclass")
     }
     
+    open func finish() { }
+    
     open func start(childCoordinator: FlowCoordinator) {
         childCoordinator.parentCoordinator = self
         childCoordinator.start()
@@ -29,13 +31,13 @@ open class FlowCoordinator: NSObject, Coordinator {
         return false
     }
     
+    public func send(flowEvent: FlowEvent) {
+        handleInternally(flowEvent: flowEvent)
+    }
+    
     private func handleInternally(flowEvent: FlowEvent) {
         if !handle(flowEvent: flowEvent) {
             parentCoordinator?.handleInternally(flowEvent: flowEvent)
         }
-    }
-    
-    public func send(flowEvent: FlowEvent) {
-        handleInternally(flowEvent: flowEvent)
     }
 }
