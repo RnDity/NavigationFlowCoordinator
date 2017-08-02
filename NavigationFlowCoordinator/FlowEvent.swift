@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+/// protocol that any specific flow event class needs to conform
+/// to make possible to send the object of the class using flow events mechanism
 public protocol FlowEvent {
     
 }

@@ -9,6 +9,9 @@
 import Foundation
 
 public protocol Coordinator: class {
+    /// starts coordinator flow
     func start()
+    
+    /// finish coordinator flow
     func finish()
 }
