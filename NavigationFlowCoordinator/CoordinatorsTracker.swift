@@ -9,5 +9,8 @@
 import Foundation
 
 public protocol CoordinatorsTracker {
+    /// gives a chance to track the coordinator reference in a custom way
+    ///
+    /// - Parameter coordinator: coordinator to track
     func track(coordinator: Coordinator)
 }

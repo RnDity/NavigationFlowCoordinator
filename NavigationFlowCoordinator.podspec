@@ -11,7 +11,7 @@ s.license = { :type => "MIT" }
 s.version = "1.0.0"
 s.requires_arc = true
 s.source = { :git => 'https://github.com/RnDity/NavigationFlowCoordinator.git'}
-s.source_files = "true", "NavigationFlowCoordinator/**/*.{h,m,swift}"
+s.source_files = "true", "**/*.{h,m,swift}"
 
 s.framework = "UIKit"
 
