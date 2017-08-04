@@ -1,0 +1,101 @@
+//
+//  MovieDetailsViewController.swift
+//  NavigationFlowCoordinatorExample
+//
+//  Created by Rafał Urbaniak on 02/08/2017.
+//  Copyright © 2017 Rndity. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+protocol MovieDetailsFlowDelegate: class {
+    func editMovie()
+    
+    func onMovieUpdated()
+}
+
+class MovieDetailsViewController: UIViewController {
+    
+    weak var flowDelegate: MovieDetailsFlowDelegate?
+    
+    var connection: Connection!
+    var movieId: String!
+    
+    var movie: Movie?
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var isFavouriteSwitch: UISwitch!
+    
+    
+    public convenience init(connection: Connection, movieId: String){
+        self.init(nibName: "MovieDetailsViewController", bundle: Bundle.main)
+        self.connection = connection
+        self.movieId = movieId
+    }
+    
+    override func viewDidLoad() {
+        edgesForExtendedLayout = []
+        
+        navigationItem.title = "Movie details"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMovie))
+        
+        isFavouriteSwitch.addTarget(self, action: #selector(onGenreSwitchToggled), for: .valueChanged)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchDataIfNeeded()
+    }
+    
+    func fetchDataIfNeeded() {
+        if movie == nil {
+            fetchData()
+        }
+    }
+    
+    func fetchData() {
+        showLoader()
+        connection.getMovie(withId: movieId) { [weak self] movie, error in
+            self?.hideLoader()
+            if error == nil, let movie = movie {
+                self?.movie = movie
+                self?.updateView()
+            }
+        }
+    }
+    
+    func updateView() {
+        if let movie = movie {
+            titleLabel.text = movie.title
+            genreLabel.text = movie.genre.rawValue
+            isFavouriteSwitch.isOn = movie.isFavourite
+        }
+    }
+    
+    func editMovie() {
+        flowDelegate?.editMovie()
+    }
+    
+    func onGenreSwitchToggled() {
+        if var movie = movie {
+            movie.isFavourite = isFavouriteSwitch.isOn
+            updateMovie(movie: movie)
+        }
+    }
+    
+    func updateMovie(movie: Movie) {
+        connection.updateMovie(movie: movie) { [weak self] movie, error in
+            if error == nil, let movie = movie {
+                self?.movie = movie
+                self?.flowDelegate?.onMovieUpdated()
+            }
+        }
+    }
+    
+    func invalidateMovieData() {
+        movie = nil
+    }
+}
