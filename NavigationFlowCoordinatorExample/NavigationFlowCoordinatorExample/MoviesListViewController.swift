@@ -75,7 +75,6 @@ class MoviesListViewController: UIViewController {
 }
 
 extension MoviesListViewController: UITableViewDataSource {
-    @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "cell"
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
@@ -88,7 +87,6 @@ extension MoviesListViewController: UITableViewDataSource {
         return cell!
     }
 
-    @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies?.count ?? 0
     }

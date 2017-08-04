@@ -115,12 +115,10 @@ class MovieCreateOrUpdateViewController: UIViewController {
 }
 
 extension MovieCreateOrUpdateViewController: UIPickerViewDataSource {
-    @available(iOS 2.0, *)
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return genres.count
     }
 
-    @available(iOS 2.0, *)
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
