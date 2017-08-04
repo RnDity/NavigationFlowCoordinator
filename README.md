@@ -8,8 +8,8 @@ Coordinators concept is design pattern helping organize flow of screens in your 
 `Coordinator` protocol is an abstraction over objects that can start and finish some flow. Usually part of flow controlled by coordinator consists of few `UIViewControllers`. `Coordinator` protocol is very simple:
 ```swift
 public protocol Coordinator: class {
-func start()
-func finish()
+    func start()
+    func finish()
 }
 ```
 
@@ -28,23 +28,23 @@ It also gives ability to send and handle `FlowEvents`. This mechanism is describ
 ```swift
 class MoviesListCoordinator: NavigationFlowCoordinator {
 
-override func createMainViewController() -> UIViewController? {
-let viewController = MoviesListViewController()
-viewController.flowDelegate = self
-return viewController
-}
+    override func createMainViewController() -> UIViewController? {
+        let viewController = MoviesListViewController()
+        viewController.flowDelegate = self
+        return viewController
+    }
 }
 
 extension MoviesListCoordinator: MovieListFlowDelegate {
-func addNewMovie() {
-// starts child coordinator that handles other part of flow
-start(childCoordinator: MovieCreateOrUpdateCoordinator(movieId: nil))
-}
+    func addNewMovie() {
+        // starts child coordinator that handles other part of flow
+        start(childCoordinator: MovieCreateOrUpdateCoordinator(movieId: nil))
+    }
 
-func showAbout() {
-// present view controller being part of flow controlled by this coordinator
-push(viewController: AboutViewController())
-}
+    func showAbout() {
+        // present view controller being part of flow controlled by this coordinator
+        push(viewController: AboutViewController())
+    }
 }
 ```
 
@@ -64,10 +64,10 @@ send(flowEvent: MovieUpdatedFlowEvent(movieId: movieId))
 The event can be then handled by any of parent coordinators in chain that are interested in handling this particular event by overriding method:
 ```swift
 override func handle(flowEvent: FlowEvent) -> Bool {
-if let movieUpdatedFlowEvent = flowEvent as? MovieUpdatedFlowEvent, movieUpdatedFlowEvent.movieId == movieId {
-movieDetailsViewController.invalidateMovieData()
-}
-return false
+    if let movieUpdatedFlowEvent = flowEvent as? MovieUpdatedFlowEvent, movieUpdatedFlowEvent.movieId == movieId {
+        movieDetailsViewController.invalidateMovieData()
+    }
+    return false
 }
 ```
 
