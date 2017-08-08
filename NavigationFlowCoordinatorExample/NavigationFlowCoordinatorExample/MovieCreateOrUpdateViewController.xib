@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieCreateOrUpdateViewController" customModule="NavigationFlowCoordinatorExample" customModuleProvider="target">
+            <connections>
+                <outlet property="genrePicker" destination="UPD-W9-Yed" id="F73-QH-Jgg"/>
+                <outlet property="titleTextEdit" destination="4Dj-9n-9pj" id="YYb-jf-ICy"/>
+                <outlet property="view" destination="iN0-l3-epB" id="gFi-a4-fnU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvM-gJ-Z8e">
+                    <rect key="frame" x="10" y="10" width="42.5" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPR-KX-URF">
+                    <rect key="frame" x="10" y="102" width="58" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Dj-9n-9pj">
+                    <rect key="frame" x="10" y="42" width="355" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-W9-Yed">
+                    <rect key="frame" x="0.0" y="136" width="375" height="216"/>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4Dj-9n-9pj" firstAttribute="top" secondItem="MvM-gJ-Z8e" secondAttribute="bottom" constant="8" id="4LD-sc-dJa"/>
+                <constraint firstItem="MvM-gJ-Z8e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="9CT-1r-zbU"/>
+                <constraint firstItem="VPR-KX-URF" firstAttribute="leading" secondItem="MvM-gJ-Z8e" secondAttribute="leading" id="9u9-oj-gyo"/>
+                <constraint firstAttribute="trailing" secondItem="4Dj-9n-9pj" secondAttribute="trailing" constant="10" id="W8d-eN-ST9"/>
+                <constraint firstItem="UPD-W9-Yed" firstAttribute="top" secondItem="VPR-KX-URF" secondAttribute="bottom" constant="10" id="YJE-Al-tcG"/>
+                <constraint firstItem="VPR-KX-URF" firstAttribute="top" secondItem="4Dj-9n-9pj" secondAttribute="bottom" constant="30" id="ejV-wW-z1B"/>
+                <constraint firstAttribute="trailing" secondItem="UPD-W9-Yed" secondAttribute="trailing" id="g69-8J-z3T"/>
+                <constraint firstItem="MvM-gJ-Z8e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="pvt-zH-Wc4"/>
+                <constraint firstItem="UPD-W9-Yed" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rjP-la-FKs"/>
+                <constraint firstItem="4Dj-9n-9pj" firstAttribute="leading" secondItem="MvM-gJ-Z8e" secondAttribute="leading" id="xKe-ap-be0"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
