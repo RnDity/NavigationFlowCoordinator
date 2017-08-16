@@ -1,8 +1,18 @@
 # NavigationFlowCoordinator
 
+[![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![Pod Version](https://img.shields.io/cocoapods/v/NavigationFlowCoordinator.svg?style=flat-square)](http://cocoadocs.org/docsets/NavigationFlowCoordinator/1.0.1/)
+
 Coordinators concept is design pattern helping organize flow of screens in your applications. It's nicely explained by Krzysztof Zabłocki in [this blog post](http://merowing.info/2016/01/improve-your-ios-architecture-with-flowcontrollers/).
 
 `NavigationFlowCoordinator` is basic implementation of this pattern with some additional useful features.
+
+## Installation
+
+CocoaPods:
+```swift
+pod 'NavigationFlowCoordinator'
+```
 
 ## Coordinator
 `Coordinator` protocol is an abstraction over objects that can start and finish some flow. Usually part of flow controlled by coordinator consists of few `UIViewControllers`. `Coordinator` protocol is very simple:
