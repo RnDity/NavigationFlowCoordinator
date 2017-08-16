@@ -145,6 +145,12 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         rootCoordinator.popToMainViewController()
     }
     
+    /// instantly removes all view controllers from navigation controller
+    public func clearNavigationControllerStack(){
+        navigationController.viewControllers = []
+        forceUpdateTrackingStatus()
+    }
+    
     
     // MARK: Modal VCs
     
