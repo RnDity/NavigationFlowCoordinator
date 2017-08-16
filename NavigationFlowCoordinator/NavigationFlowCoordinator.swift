@@ -32,7 +32,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
 
     /// mainViewController is view controller instace created as a result of createMainViewController() call
     /// and presented as very first VC in coordinator flow
-    private(set) var mainViewController: UIViewController!
+    private(set) var mainViewController: UIViewController?
     
     
     /// creates view controller that is used then as mainViewController
@@ -98,7 +98,9 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     ///
     /// - Parameter animated: is transition animated
     public func popAllRelatedViewControllers(animated: Bool = true) {
-        if let index = navigationController.viewControllers.index(of: mainViewController), index > 0 {
+        assert(mainViewController != nil, "mainViewController can not be nil in context of: \(#function)")
+
+        if let mainViewController = mainViewController, let index = navigationController.viewControllers.index(of: mainViewController), index > 0 {
             navigationController.popToViewController(navigationController.viewControllers[index - 1], animated: animated)
         }
     }
@@ -114,7 +116,11 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     ///
     /// - Parameter animated: is transition animated
     public func popToMainViewController(animated: Bool = true) {
-        _ = navigationController.popToViewController(mainViewController, animated: animated)
+        assert(mainViewController != nil, "mainViewController can not be nil in context of: \(#function)")
+
+        if let mainViewController = mainViewController {
+            _ = navigationController.popToViewController(mainViewController, animated: animated)
+        }
     }
     
     
@@ -174,6 +180,10 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     // MARK: private methods
 
     private func presentMainViewController() {
-        push(viewController: mainViewController, animated: true)
+        assert(mainViewController != nil, "mainViewController can not be nil in context of: \(#function)")
+
+        if let mainViewController = mainViewController {
+            push(viewController: mainViewController, animated: true)
+        }
     }
 }
