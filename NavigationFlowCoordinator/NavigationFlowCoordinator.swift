@@ -99,9 +99,16 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     /// - Parameter animated: is transition animated
     public func popAllRelatedViewControllers(animated: Bool = true) {
         assert(mainViewController != nil, "mainViewController can not be nil in context of: \(#function)")
-
-        if let mainViewController = mainViewController, let index = navigationController.viewControllers.index(of: mainViewController), index > 0 {
+        
+        guard let mainViewController = mainViewController, let index = navigationController.viewControllers.index(of: mainViewController) else {
+            return
+        }
+        
+        if index > 0 {
             navigationController.popToViewController(navigationController.viewControllers[index - 1], animated: animated)
+        } else {
+            clearNavigationControllerStack()
+            self.mainViewController = nil
         }
     }
     
