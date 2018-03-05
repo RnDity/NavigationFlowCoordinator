@@ -24,6 +24,8 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     
     private var navigationCoordinatorsTracker: NavigationControllerCoordinatorsTracker!
 
+    // configures initial push animation
+    public var initialPushAnimated = true
     
     /// UINavigationController instance being used to present view controllers hosted by coordinator
     open var navigationController: UINavigationController {
@@ -189,7 +191,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         assert(mainViewController != nil, "mainViewController can not be nil in context of: \(#function)")
 
         if let mainViewController = mainViewController {
-            push(viewController: mainViewController, animated: true)
+            push(viewController: mainViewController, animated: initialPushAnimated)
         }
     }
 }
