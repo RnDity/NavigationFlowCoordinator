@@ -174,3 +174,25 @@ extension UIView {
         }
     }
 }
+
+
+// Cannot convert value of type UILayoutPriority  (re: https://stackoverflow.com/a/47163386/7599)
+// Helpers for UILayoutPriority for swift 4
+// https://gist.github.com/jeremiegirault/7f73692a162b6ecf8ef60c7809e8679e
+extension UILayoutPriority: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+    public init(floatLiteral value: Float) {
+        self.init(rawValue: value)
+    }
+
+    public init(integerLiteral value: Int) {
+        self.init(rawValue: Float(value))
+    }
+
+    public static func +(lhs: UILayoutPriority, rhs: UILayoutPriority) -> UILayoutPriority {
+        return UILayoutPriority(rawValue: lhs.rawValue + rhs.rawValue)
+    }
+
+    public static func -(lhs: UILayoutPriority, rhs: UILayoutPriority) -> UILayoutPriority {
+        return UILayoutPriority(rawValue: lhs.rawValue - rhs.rawValue)
+    }
+}

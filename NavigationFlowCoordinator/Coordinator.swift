@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Coordinator: class {
+@objc public protocol Coordinator: class {
     /// starts coordinator flow
     func start()
     

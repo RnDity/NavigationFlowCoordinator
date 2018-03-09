@@ -40,7 +40,7 @@ class MovieDetailsViewController: UIViewController {
         
         navigationItem.title = "Movie details"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMovie))
-        
+
         isFavouriteSwitch.addTarget(self, action: #selector(onGenreSwitchToggled), for: .valueChanged)
     }
     
@@ -75,11 +75,11 @@ class MovieDetailsViewController: UIViewController {
         }
     }
     
-    func editMovie() {
+    @objc func editMovie() {
         flowDelegate?.editMovie()
     }
     
-    func onGenreSwitchToggled() {
+    @objc func onGenreSwitchToggled() {
         if var movie = movie {
             movie.isFavourite = isFavouriteSwitch.isOn
             updateMovie(movie: movie)
