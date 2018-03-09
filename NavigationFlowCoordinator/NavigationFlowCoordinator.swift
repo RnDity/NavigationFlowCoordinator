@@ -32,7 +32,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         return navigationCoordinatorsTracker.navigationController
     }
 
-    /// mainViewController is view controller instace created as a result of createMainViewController() call
+    /// mainViewController is view controller instance created as a result of createMainViewController() call
     /// and presented as very first VC in coordinator flow
     private(set) var mainViewController: UIViewController?
 
@@ -54,10 +54,6 @@ open class NavigationFlowCoordinator: FlowCoordinator {
 
     // MARK: FlowCoordinator overrides
 
-    override open var coordinatorsTracker: CoordinatorsTracker? {
-        return navigationCoordinatorsTracker
-    }
-
     override open func start() {
         if navigationCoordinatorsTracker == nil {
             navigationCoordinatorsTracker = NavigationControllerCoordinatorsTracker()
@@ -69,10 +65,6 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         }
     }
 
-    override open func finish() {
-        popAllRelatedViewControllers()
-    }
-
     override open func start(childCoordinator: FlowCoordinator) {
         let childNavigationFlowCoordinator = childCoordinator as? NavigationFlowCoordinator
 
@@ -80,6 +72,15 @@ open class NavigationFlowCoordinator: FlowCoordinator {
 
         super.start(childCoordinator: childCoordinator)
     }
+
+    override open func finish() {
+        popAllRelatedViewControllers()
+    }
+
+    override open var coordinatorsTracker: CoordinatorsTracker? {
+        return navigationCoordinatorsTracker
+    }
+
 
     // MARK: Navigation controller related flow
 
