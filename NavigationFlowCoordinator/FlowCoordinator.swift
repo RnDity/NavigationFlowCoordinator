@@ -10,18 +10,16 @@ import Foundation
 
 /// Basic implementation of flow coordinator, indtended to subclass
 open class FlowCoordinator: NSObject {
-    
+
     /// parent coordinator that started this coordinator as a child coordinator
     weak var parentCoordinator: FlowCoordinator?
-    
-    
+
     /// object intended to automatically track coordinator reference
     /// when nil the reference needs to be kept explicitly
     var coordinatorsTracker: CoordinatorsTracker? {
         return nil
     }
-    
-    
+
     /// starts child coordinator
     ///
     /// - Parameter childCoordinator: child coordinator
@@ -30,8 +28,7 @@ open class FlowCoordinator: NSObject {
         childCoordinator.start()
         coordinatorsTracker?.track(coordinator: childCoordinator)
     }
-    
-    
+
     /// function intended to be overriden by subclasses that are interested in handling any FlowEvent
     ///
     /// - Parameter flowEvent: flow event object
@@ -39,16 +36,14 @@ open class FlowCoordinator: NSObject {
     open func handle(flowEvent: FlowEvent) -> Bool {
         return false
     }
-    
-    
+
     /// sends specific flow event
     ///
     /// - Parameter flowEvent: flow event to be sent
     public func send(flowEvent: FlowEvent) {
         handleInternally(flowEvent: flowEvent)
     }
-    
-    
+
     private func handleInternally(flowEvent: FlowEvent) {
         if !handle(flowEvent: flowEvent) {
             parentCoordinator?.handleInternally(flowEvent: flowEvent)
@@ -60,6 +55,6 @@ extension FlowCoordinator: Coordinator {
     open func start() {
         fatalError("start() method has to be overriden by FlowCoordinator subclass")
     }
-    
+
     open func finish() { }
 }

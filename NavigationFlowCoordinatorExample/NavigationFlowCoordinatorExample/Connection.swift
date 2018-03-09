@@ -9,8 +9,8 @@
 import Foundation
 
 protocol Connection {
-    func getMovieShortInfo(completion: @escaping (([MovieShortInfo]? ,Error?) -> Void))
-    func getMovie(withId id: String, completion: @escaping ((Movie? ,Error?) -> Void))
+    func getMovieShortInfo(completion: @escaping (([MovieShortInfo]?, Error?) -> Void))
+    func getMovie(withId id: String, completion: @escaping ((Movie?, Error?) -> Void))
     func createMovie(movie: Movie, completion: @escaping ((Movie?, Error?) -> Void))
     func updateMovie(movie: Movie, completion: @escaping ((Movie?, Error?) -> Void))
 

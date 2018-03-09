@@ -13,13 +13,13 @@ import NavigationFlowCoordinator
 class MovieCreateOrUpdateCoordinator: NavigationFlowCoordinator {
     var connection: Connection
     var movieId: String?
-    
+
     init(connection: Connection, movieId: String?) {
         self.connection = connection
         self.movieId = movieId
         super.init()
     }
-    
+
     override func createMainViewController() -> UIViewController? {
         let vc = MovieCreateOrUpdateViewController(connection: connection, movieId: movieId)
         vc.flowDelegate = self
@@ -34,7 +34,7 @@ extension MovieCreateOrUpdateCoordinator: MovieCreateOrUpdateFlowDelegate {
         }
         popLastViewController()
     }
-    
+
     func onMovieCreated() {
         send(flowEvent: MovieCreatedFlowEvent())
         popLastViewController()

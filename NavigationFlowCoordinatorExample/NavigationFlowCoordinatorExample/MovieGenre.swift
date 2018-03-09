@@ -15,7 +15,7 @@ enum MovieGenre: String {
     case Action = "Action"
     case Western = "Western"
     case SciFi = "SciFi"
-    
+
     static func allCases() -> [MovieGenre] {
         return [.Comedy, .Thriller, .Drama, .Action, .Western, .SciFi]
     }

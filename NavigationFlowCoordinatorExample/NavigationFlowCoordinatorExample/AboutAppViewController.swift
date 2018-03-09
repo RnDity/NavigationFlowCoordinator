@@ -10,16 +10,15 @@ import Foundation
 
 import UIKit
 
-
 class AboutAppViewController: UIViewController {
-    
-    public convenience init(){
+
+    public convenience init() {
         self.init(nibName: "AboutAppViewController", bundle: Bundle.main)
     }
-    
+
     override func viewDidLoad() {
         edgesForExtendedLayout = []
-        
+
         navigationItem.title = "About app"
     }
 }
