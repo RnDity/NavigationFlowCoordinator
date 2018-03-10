@@ -8,9 +8,16 @@
 
 import Foundation
 
-@objc public protocol Coordinator: class {
+
+public enum navigationStyle: Int {
+    case present
+    case push
+}
+
+
+public protocol Coordinator: class {
     /// starts coordinator flow
-    func start()
+    func start(with presentationStyle: navigationStyle, animated: Bool)
 
     /// finish coordinator flow
     func finish()

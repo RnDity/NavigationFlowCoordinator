@@ -48,6 +48,10 @@ class MovieDetailsViewController: UIViewController {
         fetchDataIfNeeded()
     }
 
+    deinit {
+        print("deinit: \(#file.components(separatedBy: "/").last ?? "")")
+    }
+
     func fetchDataIfNeeded() {
         if movie == nil {
             fetchData()

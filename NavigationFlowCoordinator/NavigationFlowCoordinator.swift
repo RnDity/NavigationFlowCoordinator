@@ -12,7 +12,7 @@ import UIKit
  Base implementation of navigation flow coordinator.
  Intended to be subclassed by specific coordinator implementations.
  
- Functionallity it provides:
+ Functionality it provides:
  
  - starts with specific view controller being defined by overriding createMainViewController() function.
  - hosts instance of UINavigationViewController that is used for presenting related UIViewControllers. The instance is shared among coordinators binded with parent-child relationship chain (unless navigationController property is overriden).
@@ -23,9 +23,6 @@ import UIKit
 open class NavigationFlowCoordinator: FlowCoordinator {
 
     private var navigationCoordinatorsTracker: NavigationControllerCoordinatorsTracker!
-
-    // configures initial push animation
-    public var initialPushAnimated = true
 
     /// UINavigationController instance being used to present view controllers hosted by coordinator
     open var navigationController: UINavigationController {
@@ -44,33 +41,29 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         return nil
     }
 
-    /// Force tracking status update.
-    /// Updating tracking status bases on navigationController delegate "willShow viewController" method.
-    /// This method might be not called in same cases, i.e. when coordinator mainViewController is is instantly replaced with other view controller (i.e by starting other child coordinator without animation)
-    /// In this case the caller might force updating tracking status so that coordinator object gets released
-    public func forceUpdateTrackingStatus() {
-        navigationCoordinatorsTracker.updateTrackingStatus()
-    }
 
-    // MARK: FlowCoordinator overrides
+    // MARK: - FlowCoordinator overrides
 
-    override open func start() {
+    override open func start(with presentationStyle: navigationStyle, animated: Bool = true) {
         if navigationCoordinatorsTracker == nil {
             navigationCoordinatorsTracker = NavigationControllerCoordinatorsTracker()
         }
 
         if let viewController = createMainViewController() {
             mainViewController = viewController
-            presentMainViewController()
+
+            if let mainVC = mainViewController {
+                navigate(to: mainVC, with: presentationStyle, animated: animated)
+            }
         }
     }
 
-    override open func start(childCoordinator: FlowCoordinator) {
+    override open func start(childCoordinator: FlowCoordinator, with presentationStyle: navigationStyle, animated: Bool = true) {
         let childNavigationFlowCoordinator = childCoordinator as? NavigationFlowCoordinator
 
         childNavigationFlowCoordinator?.navigationCoordinatorsTracker = self.navigationCoordinatorsTracker
 
-        super.start(childCoordinator: childCoordinator)
+        super.start(childCoordinator: childCoordinator, with: presentationStyle, animated: animated)
     }
 
     override open func finish() {
@@ -82,7 +75,16 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     }
 
 
-    // MARK: Navigation controller related flow
+    // MARK: - Navigation controller related flow
+
+    func navigate(to viewController: UIViewController, with presentationStyle: navigationStyle, animated: Bool = true) {
+        switch presentationStyle {
+        case .present:
+            present(viewController: viewController, animated: animated)
+        case .push:
+            push(viewController: viewController, animated: animated)
+        }
+    }
 
     /// push viewController onto navigation controller
     ///
@@ -156,7 +158,16 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         forceUpdateTrackingStatus()
     }
 
-    // MARK: Modal VCs
+    /// Force tracking status update.
+    /// Updating tracking status bases on navigationController delegate "willShow viewController" method.
+    /// This method might not be called in some cases, i.e. when coordinator `mainViewController` is instantly replaced with other view controller (i.e by starting another child coordinator without animation)
+    /// In this case the caller might need to force updating the tracking status so that coordinator object gets released
+    open func forceUpdateTrackingStatus() {
+        navigationCoordinatorsTracker.updateTrackingStatus()
+    }
+
+
+    // MARK: - Modal VCs
 
     /// present view controller modally over navigation controller
     ///
@@ -165,7 +176,9 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     ///   - animated: is transition animated
     ///   - completion: closure called when transition is finished
     public func present(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
-        navigationController.present(viewController, animated: true, completion: completion)
+        let nvc = UINavigationController(rootViewController: viewController)    // add standard UINVC bar
+        navigationController.present(nvc, animated: true, completion: completion)
+//        navigationController.present(viewController, animated: true, completion: completion)
     }
 
     /// dismiss specific view controller
@@ -175,6 +188,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     ///   - animated: is transition animated
     public func dismiss(viewController: UIViewController, animated: Bool = true) {
         viewController.dismiss(animated: animated, completion: nil)
+        forceUpdateTrackingStatus()
     }
 
     /// dismiss last modal view controller
@@ -184,10 +198,13 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     ///   - completion: closure called when transition is finished
     public func dismissLastViewController(animated: Bool = true, completion: (() -> Void)? = nil) {
         navigationController.dismiss(animated: animated, completion: completion)
+        forceUpdateTrackingStatus()
+
     }
 
-    // MARK: private methods
 
+    // MARK: - private methods
+/*
     private func presentMainViewController() {
         assert(mainViewController != nil, "mainViewController can not be nil in context of: \(#function)")
 
@@ -195,4 +212,5 @@ open class NavigationFlowCoordinator: FlowCoordinator {
             push(viewController: mainViewController, animated: initialPushAnimated)
         }
     }
+*/
 }

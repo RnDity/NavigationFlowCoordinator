@@ -48,6 +48,10 @@ class MovieCreateOrUpdateViewController: UIViewController {
         self.movieId = movieId
     }
 
+    deinit {
+        print("deinit: \(#file.components(separatedBy: "/").last ?? "")")
+    }
+
     func fetchData() {
         guard let movieId = movieId else {
             return

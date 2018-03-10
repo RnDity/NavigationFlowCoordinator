@@ -58,14 +58,14 @@
 		45A5DD8F1F30BFB90084D00A /* NavigationFlowCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				45A5DD901F30BFB90084D00A /* NavigationFlowCoordinator.h */,
-				45A5DD911F30BFB90084D00A /* Info.plist */,
 				45A5DD981F30C0640084D00A /* Coordinator.swift */,
-				45A5DD9A1F30C0A20084D00A /* CoordinatorsTracker.swift */,
 				45A5DD9C1F30C0B40084D00A /* FlowCoordinator.swift */,
+				45A5DD9F1F30C0B40084D00A /* NavigationFlowCoordinator.swift */,
 				45A5DD9D1F30C0B40084D00A /* FlowEvent.swift */,
 				45A5DD9E1F30C0B40084D00A /* NavigationControllerCoordinatorsTracker.swift */,
-				45A5DD9F1F30C0B40084D00A /* NavigationFlowCoordinator.swift */,
+				45A5DD9A1F30C0A20084D00A /* CoordinatorsTracker.swift */,
+				45A5DD911F30BFB90084D00A /* Info.plist */,
+				45A5DD901F30BFB90084D00A /* NavigationFlowCoordinator.h */,
 			);
 			path = NavigationFlowCoordinator;
 			sourceTree = "<group>";

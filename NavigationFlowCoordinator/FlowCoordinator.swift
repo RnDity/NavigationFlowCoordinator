@@ -9,7 +9,7 @@
 import Foundation
 
 /// Basic implementation of flow coordinator, indtended to subclass
-open class FlowCoordinator: NSObject {
+open class FlowCoordinator: NSObject, Coordinator {
 
     /// parent coordinator that started this coordinator as a child coordinator
     weak var parentCoordinator: FlowCoordinator?
@@ -23,9 +23,9 @@ open class FlowCoordinator: NSObject {
     /// starts child coordinator
     ///
     /// - Parameter childCoordinator: child coordinator
-    open func start(childCoordinator: FlowCoordinator) {
+    open func start(childCoordinator: FlowCoordinator, with presentationStyle: navigationStyle, animated: Bool = true) {
         childCoordinator.parentCoordinator = self
-        childCoordinator.start()
+        childCoordinator.start(with: presentationStyle, animated: animated)
         coordinatorsTracker?.track(coordinator: childCoordinator)
     }
 
@@ -49,12 +49,11 @@ open class FlowCoordinator: NSObject {
             parentCoordinator?.handleInternally(flowEvent: flowEvent)
         }
     }
-}
 
-extension FlowCoordinator: Coordinator {
-    open func start() {
-        fatalError("start() method has to be overriden by FlowCoordinator subclass")
+    public func start(with presentationStyle: navigationStyle, animated: Bool) {
+        fatalError("start(...) method has to be overriden by FlowCoordinator subclass")
     }
 
-    open func finish() { }
+    public func finish() { }
 }
+

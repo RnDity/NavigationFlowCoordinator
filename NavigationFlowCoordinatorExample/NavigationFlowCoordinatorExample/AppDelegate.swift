@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
 
         mainCoordinator = MoviesListCoordinator()
-        mainCoordinator.start()
+        mainCoordinator.start(with: .push)
         window.rootViewController = mainCoordinator.navigationController
         window.makeKeyAndVisible()
 

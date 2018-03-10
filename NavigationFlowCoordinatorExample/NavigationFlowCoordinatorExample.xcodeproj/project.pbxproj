@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		453AD21E1F383DAC00BB157D /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453AD21D1F383DAC00BB157D /* AboutAppViewController.swift */; };
 		453AD2201F383E3800BB157D /* AboutAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 453AD21F1F383E3800BB157D /* AboutAppViewController.xib */; };
 		4549F8F31F30D3FD004E38F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4549F8F21F30D3FD004E38F8 /* AppDelegate.swift */; };
 		4549F8FA1F30D3FD004E38F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4549F8F91F30D3FD004E38F8 /* Assets.xcassets */; };
@@ -31,6 +30,8 @@
 		45ED4EC61F330303004B3FED /* MovieCreateOrUpdateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED4EC51F330303004B3FED /* MovieCreateOrUpdateCoordinator.swift */; };
 		45ED4EC81F330349004B3FED /* MovieCreateOrUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED4EC71F330349004B3FED /* MovieCreateOrUpdateViewController.swift */; };
 		45ED4ECA1F330354004B3FED /* MovieCreateOrUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45ED4EC91F330354004B3FED /* MovieCreateOrUpdateViewController.xib */; };
+		75BFEC2920543E0400C0726C /* AboutAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFEC2820543E0400C0726C /* AboutAppCoordinator.swift */; };
+		75BFEC2B20543E9100C0726C /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BFEC2A20543E9100C0726C /* AboutAppViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		453AD21D1F383DAC00BB157D /* AboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		453AD21F1F383E3800BB157D /* AboutAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutAppViewController.xib; sourceTree = "<group>"; };
 		4549F8EF1F30D3FD004E38F8 /* NavigationFlowCoordinatorExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationFlowCoordinatorExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4549F8F21F30D3FD004E38F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +90,8 @@
 		45ED4EC51F330303004B3FED /* MovieCreateOrUpdateCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCreateOrUpdateCoordinator.swift; sourceTree = "<group>"; };
 		45ED4EC71F330349004B3FED /* MovieCreateOrUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCreateOrUpdateViewController.swift; sourceTree = "<group>"; };
 		45ED4EC91F330354004B3FED /* MovieCreateOrUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCreateOrUpdateViewController.xib; sourceTree = "<group>"; };
+		75BFEC2820543E0400C0726C /* AboutAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppCoordinator.swift; sourceTree = "<group>"; };
+		75BFEC2A20543E9100C0726C /* AboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +184,8 @@
 				45ED4EC11F325234004B3FED /* MovieDetailsViewController.xib */,
 				45ED4EC71F330349004B3FED /* MovieCreateOrUpdateViewController.swift */,
 				45ED4EC91F330354004B3FED /* MovieCreateOrUpdateViewController.xib */,
-				453AD21D1F383DAC00BB157D /* AboutAppViewController.swift */,
+				75BFEC2820543E0400C0726C /* AboutAppCoordinator.swift */,
+				75BFEC2A20543E9100C0726C /* AboutAppViewController.swift */,
 				453AD21F1F383E3800BB157D /* AboutAppViewController.xib */,
 			);
 			name = ViewControllers;
@@ -294,11 +297,12 @@
 			files = (
 				45ED4EC41F330096004B3FED /* MovieDetailsCoordinator.swift in Sources */,
 				45ED4EB71F31FCD1004B3FED /* MoviesListViewController.swift in Sources */,
-				453AD21E1F383DAC00BB157D /* AboutAppViewController.swift in Sources */,
+				75BFEC2B20543E9100C0726C /* AboutAppViewController.swift in Sources */,
 				45ED4EBB1F31FE1D004B3FED /* MoviesListCoordinator.swift in Sources */,
 				45ED4EC01F325033004B3FED /* MovieDetailsViewController.swift in Sources */,
 				45D11D7D1F3470A200ECA2BF /* MovieCreatedFlowEvent.swift in Sources */,
 				45ED4EAB1F31EBBD004B3FED /* Connection.swift in Sources */,
+				75BFEC2920543E0400C0726C /* AboutAppCoordinator.swift in Sources */,
 				45ED4EC81F330349004B3FED /* MovieCreateOrUpdateViewController.swift in Sources */,
 				45D11D791F34603F00ECA2BF /* MovieUpdatedFlowEvent.swift in Sources */,
 				45ED4EB01F31ED64004B3FED /* MovieGenre.swift in Sources */,

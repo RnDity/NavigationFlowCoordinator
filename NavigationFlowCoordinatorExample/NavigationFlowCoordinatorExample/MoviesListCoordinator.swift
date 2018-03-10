@@ -36,15 +36,17 @@ class MoviesListCoordinator: NavigationFlowCoordinator {
 extension MoviesListCoordinator: MovieListFlowDelegate {
     func selectMovie(movie: MovieShortInfo) {
         if let movieId = movie.id {
-            start(childCoordinator: MovieDetailsCoordinator(connection: connection, movieId: movieId))
+//            start(childCoordinator: MovieDetailsCoordinator(connection: connection, movieId: movieId))
+            start(childCoordinator: MovieDetailsCoordinator(connection: connection, movieId: movieId), with: .push)
         }
     }
 
     func addNewMoview() {
-        start(childCoordinator: MovieCreateOrUpdateCoordinator(connection: connection, movieId: nil))
+        start(childCoordinator: MovieCreateOrUpdateCoordinator(connection: connection, movieId: nil), with: .push)
     }
 
     func showAbout() {
-        push(viewController: AboutAppViewController())
+//        push(viewController: AboutAppViewController())
+        start(childCoordinator: AboutAppCoordinator(), with: .present)
     }
 }
