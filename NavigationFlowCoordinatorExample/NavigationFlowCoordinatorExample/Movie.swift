@@ -13,7 +13,7 @@ struct Movie {
     var title: String
     var isFavourite: Bool
     var genre: MovieGenre
-    
+
     func toMovieShortInfo() -> MovieShortInfo {
         return MovieShortInfo(id: id, title: title, isFavourite: isFavourite)
     }

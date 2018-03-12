@@ -10,5 +10,5 @@ import Foundation
 import NavigationFlowCoordinator
 
 struct MovieCreatedFlowEvent: FlowEvent {
-    
+
 }
