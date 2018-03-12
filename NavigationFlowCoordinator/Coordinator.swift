@@ -9,7 +9,7 @@
 import Foundation
 
 
-public enum navigationStyle: Int {
+public enum NavigationStyle: Int {
     case present
     case push
 }
@@ -17,7 +17,7 @@ public enum navigationStyle: Int {
 
 public protocol Coordinator: class {
     /// starts coordinator flow
-    func start(with presentationStyle: navigationStyle, animated: Bool)
+    func start(with presentationStyle: NavigationStyle, animated: Bool)
 
     /// finish coordinator flow
     func finish()

@@ -44,7 +44,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
 
     // MARK: - FlowCoordinator overrides
 
-    override open func start(with presentationStyle: navigationStyle, animated: Bool = true) {
+    override open func start(with presentationStyle: NavigationStyle, animated: Bool = true) {
         if navigationCoordinatorsTracker == nil {
             navigationCoordinatorsTracker = NavigationControllerCoordinatorsTracker()
         }
@@ -58,7 +58,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
         }
     }
 
-    override open func start(childCoordinator: FlowCoordinator, with presentationStyle: navigationStyle, animated: Bool = true) {
+    override open func start(childCoordinator: FlowCoordinator, with presentationStyle: NavigationStyle, animated: Bool = true) {
         let childNavigationFlowCoordinator = childCoordinator as? NavigationFlowCoordinator
 
         childNavigationFlowCoordinator?.navigationCoordinatorsTracker = self.navigationCoordinatorsTracker
@@ -77,7 +77,7 @@ open class NavigationFlowCoordinator: FlowCoordinator {
 
     // MARK: - Navigation controller related flow
 
-    func navigate(to viewController: UIViewController, with presentationStyle: navigationStyle, animated: Bool = true) {
+    func navigate(to viewController: UIViewController, with presentationStyle: NavigationStyle, animated: Bool = true) {
         switch presentationStyle {
         case .present:
             present(viewController: viewController, animated: animated)

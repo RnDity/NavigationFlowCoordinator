@@ -23,7 +23,7 @@ open class FlowCoordinator: NSObject, Coordinator {
     /// starts child coordinator
     ///
     /// - Parameter childCoordinator: child coordinator
-    open func start(childCoordinator: FlowCoordinator, with presentationStyle: navigationStyle, animated: Bool = true) {
+    open func start(childCoordinator: FlowCoordinator, with presentationStyle: NavigationStyle, animated: Bool = true) {
         childCoordinator.parentCoordinator = self
         childCoordinator.start(with: presentationStyle, animated: animated)
         coordinatorsTracker?.track(coordinator: childCoordinator)
@@ -50,7 +50,7 @@ open class FlowCoordinator: NSObject, Coordinator {
         }
     }
 
-    public func start(with presentationStyle: navigationStyle, animated: Bool) {
+    public func start(with presentationStyle: NavigationStyle, animated: Bool) {
         fatalError("start(...) method has to be overriden by FlowCoordinator subclass")
     }
 
