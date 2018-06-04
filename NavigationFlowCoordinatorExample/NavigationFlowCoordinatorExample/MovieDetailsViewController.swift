@@ -75,11 +75,11 @@ class MovieDetailsViewController: UIViewController {
         }
     }
     
-    func editMovie() {
+    @objc func editMovie() {
         flowDelegate?.editMovie()
     }
     
-    func onGenreSwitchToggled() {
+    @objc func onGenreSwitchToggled() {
         if var movie = movie {
             movie.isFavourite = isFavouriteSwitch.isOn
             updateMovie(movie: movie)

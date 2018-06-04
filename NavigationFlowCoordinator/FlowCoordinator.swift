@@ -57,9 +57,9 @@ open class FlowCoordinator: NSObject {
 }
 
 extension FlowCoordinator: Coordinator {
-    open func start() {
+    @objc open func start() {
         fatalError("start() method has to be overriden by FlowCoordinator subclass")
     }
     
-    open func finish() { }
+    @objc open func finish() { }
 }
