@@ -61,7 +61,7 @@ class MoviesListViewController: UIViewController {
         }
     }
     
-    func addNewMovie() {
+    @objc func addNewMovie() {
         flowDelegate?.addNewMoview()
     }
     
@@ -69,7 +69,7 @@ class MoviesListViewController: UIViewController {
         movies = nil
     }
     
-    func showAbout() {
+    @objc func showAbout() {
         flowDelegate?.showAbout()
     }
 }

@@ -47,7 +47,7 @@ extension UIView {
                       to otherAttribute: NSLayoutAttribute,
                       of otherItem: AnyObject,
                       constant: CGFloat) -> NSLayoutConstraint {
-        return align(attribute: attribute, to: otherAttribute, of: otherItem, constant: constant, relatedBy: .equal, priority: 1000)
+        return align(attribute: attribute, to: otherAttribute, of: otherItem, constant: constant, relatedBy: .equal, priority: UILayoutPriority(rawValue: 1000))
     }
     
     @discardableResult
@@ -56,7 +56,7 @@ extension UIView {
                       of otherItem: AnyObject,
                       constant: CGFloat = 0,
                       relatedBy: NSLayoutRelation = .equal,
-                      priority: UILayoutPriority = 1000) -> NSLayoutConstraint {
+                      priority: UILayoutPriority = UILayoutPriority(rawValue: 1000)) -> NSLayoutConstraint {
         return align(attribute: attribute, to: otherAttribute, of: otherItem, constant: constant, relatedBy: relatedBy, priority: priority, multiplier: 1.0)
     }
     
@@ -66,7 +66,7 @@ extension UIView {
                       of otherItem: AnyObject,
                       constant: CGFloat = 0,
                       relatedBy: NSLayoutRelation = .equal,
-                      priority: UILayoutPriority = 1000,
+                      priority: UILayoutPriority = UILayoutPriority(rawValue: 1000),
                       multiplier: CGFloat = 1.0) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -100,7 +100,7 @@ extension UIView {
     public func alignSame(attribute: NSLayoutAttribute,
                           of otherItem: AnyObject,
                           constant: CGFloat) -> NSLayoutConstraint {
-        return alignSame(attribute: attribute, of: otherItem, constant: constant, relatedBy: .equal, priority: 1000)
+        return alignSame(attribute: attribute, of: otherItem, constant: constant, relatedBy: .equal, priority: UILayoutPriority(rawValue: 1000))
     }
     
     @discardableResult
@@ -108,7 +108,7 @@ extension UIView {
                           of otherItem: AnyObject,
                           constant: CGFloat = 0,
                           relatedBy: NSLayoutRelation = .equal,
-                          priority: UILayoutPriority = 1000) -> NSLayoutConstraint {
+                          priority: UILayoutPriority = UILayoutPriority(rawValue: 1000)) -> NSLayoutConstraint {
         return align(attribute: attribute, to: attribute, of: otherItem, constant: constant, relatedBy: relatedBy, priority: priority, multiplier: 1.0)
         
     }
@@ -118,7 +118,7 @@ extension UIView {
     public func applySizeAttribute(attribute: NSLayoutAttribute,
                                    ofValue value: CGFloat,
                                    relatedBy: NSLayoutRelation = .equal,
-                                   priority: UILayoutPriority = 1000) -> NSLayoutConstraint {
+                                   priority: UILayoutPriority = UILayoutPriority(rawValue: 1000)) -> NSLayoutConstraint {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relatedBy, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value)
@@ -135,8 +135,8 @@ extension UIView {
                                         of otherItem: AnyObject,
                                         constant: CGFloat = 0,
                                         relatedBy: NSLayoutRelation = .equal,
-                                        priority: UILayoutPriority = 1000) -> NSLayoutConstraint {
-        return align(attribute: attribute, to: otherAttribute, of: otherItem, constant: constant, relatedBy: .equal, priority: 1000, multiplier: 1.0)
+                                        priority: UILayoutPriority = UILayoutPriority(rawValue: 1000)) -> NSLayoutConstraint {
+        return align(attribute: attribute, to: otherAttribute, of: otherItem, constant: constant, relatedBy: .equal, priority: UILayoutPriority(rawValue: 1000), multiplier: 1.0)
     }
     
     public func alignAllEdgesTo(item: AnyObject, padding: CGFloat = 0) {

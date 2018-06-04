@@ -74,7 +74,7 @@ class MovieCreateOrUpdateViewController: UIViewController {
         }
     }
     
-    func save() {
+    @objc func save() {
         if var movie = movie {
             if let title = titleTextEdit.text, let genre = MovieGenre(rawValue: genres[genrePicker.selectedRow(inComponent: 0)]){
                 movie.title = title
