@@ -9,7 +9,7 @@ s.author = { "Rafał Urbaniak" => "rafal.urbaniak@rndity.com" }
 s.homepage = "https://github.com/RnDity/NavigationFlowCoordinator"
 s.license = { :type => "MIT" }
 
-s.version = "1.1.1"
+s.version = "1.1.2"
 s.requires_arc = true
 s.source = { :git => 'https://github.com/RnDity/NavigationFlowCoordinator.git', :tag => "#{s.version}" }
 s.source_files = "true", "**/*.{h,m,swift}"

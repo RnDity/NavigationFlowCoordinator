@@ -2,8 +2,8 @@
 //  NavigationFlowCoordinator.swift
 //  NavigationFlowCoordinator
 //
-//  Created by Marek Świecznik on 09/12/16.
-//  Copyright © 2016 RnDity. All rights reserved.
+//  Created and developed by RnDity sp. z o.o. in 2018.
+//  Copyright © 2018 RnDity sp. z o.o. All rights reserved.
 //
 
 import UIKit
