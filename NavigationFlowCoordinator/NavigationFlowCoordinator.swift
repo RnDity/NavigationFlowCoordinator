@@ -172,6 +172,17 @@ open class NavigationFlowCoordinator: FlowCoordinator {
     public func present(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
         navigationController.present(viewController, animated: true, completion: completion)
     }
+   
+    /// present view controller modal in fullscreen over navigation controller - overrides default ios13 new modalPresentationStyle
+    ///
+    /// - Parameters:
+    ///   - viewController: view controller to be presented
+    ///   - animated: is transition animated
+    ///   - completion: closure called when transition is finished
+    public func presentInFullScreen(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController: viewController, animated: animated, completion: completion)
+    }
     
     /// dismiss specific view controller
     ///
